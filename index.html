@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Exchange Leon — Быстрый обмен крипто</title>
+<style>
+/* Simple responsive styling */
+:root{
+  --bg:#0f172a; --card:#0b1220; --accent:#06b6d4; --muted:#94a3b8; --text:#e6eef8;
+  --radius:12px;
+  font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+*{box-sizing:border-box}
+html,body{height:100%; margin:0; background:linear-gradient(180deg,#071024 0%, #071a2a 100%); color:var(--text)}
+.container{max-width:980px;margin:32px auto;padding:24px;}
+.header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,#06b6d4,#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:700;color:#021124}
+.nav a{color:var(--muted);text-decoration:none;margin-left:14px}
+.card{background:var(--card);padding:20px;border-radius:var(--radius);box-shadow:0 6px 18px rgba(2,6,23,0.6)}
+h1,h2{margin:0 0 12px 0}
+p{color:var(--muted);line-height:1.5}
+.pair{display:flex;gap:12px;flex-wrap:wrap}
+.pair .item{background:#021124;padding:10px 14px;border-radius:10px;color:var(--text);font-weight:600}
+.button{background:var(--accent);padding:10px 14px;border-radius:10px;color:#021124;border:none;font-weight:700;cursor:pointer}
+.small{font-size:13px;color:var(--muted)}
+.exchange-grid{display:grid;grid-template-columns:1fr 340px;gap:18px}
+@media(max-width:900px){.exchange-grid{grid-template-columns:1fr} .nav{display:none}}
+.form-row{margin-bottom:12px}
+.input, select, textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text)}
+.helper{font-size:13px;color:var(--muted);margin-top:6px}
+.copy{cursor:pointer;padding:6px 8px;border-radius:8px;border:1px dashed rgba(255,255,255,0.04);display:inline-block;margin-left:8px}
+.footer{margin-top:24px;color:var(--muted);font-size:13px;text-align:center}
+.note{background:linear-gradient(90deg, rgba(6,182,212,0.06), rgba(124,58,237,0.04));padding:12px;border-radius:10px;margin-top:12px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="brand">
+      <div class="logo">EL</div>
+      <div>
+        <div style="font-weight:700;font-size:18px">Exchange Leon</div>
+        <div class="small">Быстрый и простой криптообмен</div>
+      </div>
+    </div>
+    <div class="nav">
+      <a href="index.html">Главная</a>
+      <a href="exchange.html">Обмен</a>
+      <a href="contacts.html">Контакты</a>
+    </div>
+  </div>
+
+  <div style="height:18px"></div>
+
+  <div class="card">
+    <h1>Обмен криптовалют и валют</h1>
+    <p class="small">Поддерживаемые пары: BTC ↔ USDT, USDT ↔ UAH, ETH ↔ BTC, а также USD, EUR, UAH. Этот сайт — бесплатный MVP: заявки отправляются в Telegram (через окно отправки), а операции обрабатываются вручную.</p>
+    <div style="height:12px"></div>
+
+    <div class="pair">
+      <div class="item">BTC ↔ USDT</div>
+      <div class="item">USDT ↔ UAH</div>
+      <div class="item">ETH ↔ BTC</div>
+      <div class="item">USD / EUR / UAH</div>
+    </div>
+
+    <div style="height:18px"></div>
+    <a class="button" href="exchange.html">Сделать обмен</a>
+    <div class="note">
+      <strong>Важно:</strong> Это MVP без автоматической интеграции с биржами. После оформления заявки вы получите инструкцию в Telegram, оплатите и получите ответ вручную.
+    </div>
+  </div>
+
+  <div class="footer">© Exchange Leon — Шаблон сайта. Готово к размещению на GitHub Pages.</div>
+</div>
+</body>
+</html>

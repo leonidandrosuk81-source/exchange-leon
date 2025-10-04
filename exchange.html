@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Exchange Leon — Обмен</title>
+<style>
+/* Simple responsive styling */
+:root{
+  --bg:#0f172a; --card:#0b1220; --accent:#06b6d4; --muted:#94a3b8; --text:#e6eef8;
+  --radius:12px;
+  font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+*{box-sizing:border-box}
+html,body{height:100%; margin:0; background:linear-gradient(180deg,#071024 0%, #071a2a 100%); color:var(--text)}
+.container{max-width:980px;margin:32px auto;padding:24px;}
+.header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,#06b6d4,#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:700;color:#021124}
+.nav a{color:var(--muted);text-decoration:none;margin-left:14px}
+.card{background:var(--card);padding:20px;border-radius:var(--radius);box-shadow:0 6px 18px rgba(2,6,23,0.6)}
+h1,h2{margin:0 0 12px 0}
+p{color:var(--muted);line-height:1.5}
+.pair{display:flex;gap:12px;flex-wrap:wrap}
+.pair .item{background:#021124;padding:10px 14px;border-radius:10px;color:var(--text);font-weight:600}
+.button{background:var(--accent);padding:10px 14px;border-radius:10px;color:#021124;border:none;font-weight:700;cursor:pointer}
+.small{font-size:13px;color:var(--muted)}
+.exchange-grid{display:grid;grid-template-columns:1fr 340px;gap:18px}
+@media(max-width:900px){.exchange-grid{grid-template-columns:1fr} .nav{display:none}}
+.form-row{margin-bottom:12px}
+.input, select, textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text)}
+.helper{font-size:13px;color:var(--muted);margin-top:6px}
+.copy{cursor:pointer;padding:6px 8px;border-radius:8px;border:1px dashed rgba(255,255,255,0.04);display:inline-block;margin-left:8px}
+.footer{margin-top:24px;color:var(--muted);font-size:13px;text-align:center}
+.note{background:linear-gradient(90deg, rgba(6,182,212,0.06), rgba(124,58,237,0.04));padding:12px;border-radius:10px;margin-top:12px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="brand">
+      <div class="logo">EL</div>
+      <div>
+        <div style="font-weight:700;font-size:18px">Exchange Leon</div>
+        <div class="small">Быстрый обмен — заявки в Telegram</div>
+      </div>
+    </div>
+    <div class="nav">
+      <a href="index.html">Главная</a>
+      <a href="exchange.html">Обмен</a>
+      <a href="contacts.html">Контакты</a>
+    </div>
+  </div>
+
+  <div style="height:18px"></div>
+
+  <div class="exchange-grid">
+    <div class="card">
+      <h2>Оформить заявку</h2>
+      <p class="small">Выберите пару и введите сумму. После нажатия «Отправить» откроется окно Telegram с предзаполненным сообщением — выберите контакт (или отправьте себе), чтобы уведомить администратора.</p>
+
+      <div style="height:12px"></div>
+      <div class="form-row">
+        <label class="small">От</label>
+        <select id="from" class="input">
+          <option>BTC</option>
+          <option>USDT</option>
+          <option>ETH</option>
+          <option>USD</option>
+          <option>EUR</option>
+          <option>UAH</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label class="small">В</label>
+        <select id="to" class="input">
+          <option>USDT</option>
+          <option>BTC</option>
+          <option>ETH</option>
+          <option>UAH</option>
+          <option>USD</option>
+          <option>EUR</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label class="small">Сумма (в выбранной валюте)</label>
+        <input id="amount" class="input" placeholder="Например: 0.01, 1000" />
+      </div>
+
+      <div class="form-row">
+        <label class="small">Адрес кошелька (куда отправляем)</label>
+        <input id="address" class="input" placeholder="Адрес для получения монет или счёт/карта" />
+      </div>
+
+      <div class="form-row">
+        <label class="small">Ваш Telegram (опционально)</label>
+        <input id="tg" class="input" placeholder="@username или номер" />
+        <div class="helper">Если не указать, администратор ответит через общий контакт.</div>
+      </div>
+
+      <div style="height:8px"></div>
+
+      <button class="button" onclick="submitForm()">Отправить заявку в Telegram</button>
+      <div style="height:10px"></div>
+      <div class="small">После отправки — откроется окно Telegram (или веб-версия) с вашим сообщением. Нажмите отправить и ожидайте ответа администратора.</div>
+    </div>
+
+    <div class="card">
+      <h2>Курсы (примерные)</h2>
+      <p class="small">Курсы показываются для ориентира. На реальную сумму влияет текущий спрос и предложение — финальный курс подтверждает оператор.</p>
+      <div style="height:12px"></div>
+
+      <div class="pair">
+        <div class="item">BTC → USDT: рыночный</div>
+        <div class="item">USDT → UAH: по запросу</div>
+        <div class="item">ETH → BTC: рыночный</div>
+      </div>
+
+      <div style="height:12px"></div>
+      <h3>Наши кошельки (пример)</h3>
+      <p class="small">Ниже — примеры. Замените на свои адреса в файле contacts.html перед публикацией.</p>
+      <div class="small">BTC: <span id="btc_addr">—</span><span class="copy" onclick="copyText('btc_addr')">Copy</span></div>
+      <div class="small">USDT (ERC20): <span id="usdt_addr">—</span><span class="copy" onclick="copyText('usdt_addr')">Copy</span></div>
+      <div class="small">ETH: <span id="eth_addr">—</span><span class="copy" onclick="copyText('eth_addr')">Copy</span></div>
+
+      <div style="height:12px"></div>
+      <div class="note">Совет: для начала работы вставьте реальные адреса в contacts.html и обновите сайт.</div>
+    </div>
+  </div>
+
+  <div class="footer">© Exchange Leon — MVP</div>
+</div>
+
+<script>
+// Build a text message and open Telegram share link
+function submitForm(){
+  const from = encodeURIComponent(document.getElementById('from').value);
+  const to = encodeURIComponent(document.getElementById('to').value);
+  const amount = encodeURIComponent(document.getElementById('amount').value || '');
+  const address = encodeURIComponent(document.getElementById('address').value || '');
+  const tg = encodeURIComponent(document.getElementById('tg').value || '');
+  if(!amount || !address){
+    alert('Пожалуйста, укажите сумму и адрес кошелька.');
+    return;
+  }
+  const text = 'Новая заявка от Exchange Leon%0A%0AПара: ' + from + ' → ' + to + '%0AСумма: ' + amount + '%0AАдрес получения: ' + address + '%0AТелеграм: ' + tg + '%0A%0AПросьба обработать заявку.';
+  // Use Telegram share URL to prefill message
+  const url = 'https://t.me/share/url?url=&text=' + text;
+  window.open(url, '_blank');
+}
+
+// copy helper
+function copyText(id){
+  const el = document.getElementById(id);
+  const text = el.textContent || el.innerText;
+  navigator.clipboard.writeText(text).then(()=>alert('Скопировано в буфер обмена'));
+}
+
+// fill sample addresses from contacts.json if present (fetch)
+fetch('contacts.json').then(r=>r.json()).then(data=>{
+  if(data.btc) document.getElementById('btc_addr').innerText = data.btc;
+  if(data.usdt) document.getElementById('usdt_addr').innerText = data.usdt;
+  if(data.eth) document.getElementById('eth_addr').innerText = data.eth;
+}).catch(()=>{/* no file, ignore */});
+
+</script>
+</body>
+</html>

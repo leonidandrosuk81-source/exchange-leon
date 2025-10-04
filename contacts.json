@@ -1,0 +1,6 @@
+{
+  "admin": "@your_admin",
+  "btc": "1ExampleBTCAddressReplaceMe",
+  "usdt": "0xExampleUSDTAddressReplaceMe",
+  "eth": "0xExampleETHAddressReplaceMe"
+}
